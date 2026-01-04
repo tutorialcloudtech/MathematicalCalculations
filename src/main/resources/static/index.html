@@ -59,6 +59,8 @@
 </div>
 
 <script>
+const contextPath = window.location.pathname.split('/')[1];
+
 document.getElementById("mathForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
@@ -67,7 +69,7 @@ document.getElementById("mathForm").addEventListener("submit", async function(ev
     const operation = document.getElementById("operation").value;
 
     try {
-        const response = await fetch(`/math/${operation}?a=${a}&b=${b}`);
+        const response = await fetch(`/${contextPath}/math/${operation}?a=${a}&b=${b}`);
         if (!response.ok) throw new Error("Server error");
 
         const result = await response.text();
